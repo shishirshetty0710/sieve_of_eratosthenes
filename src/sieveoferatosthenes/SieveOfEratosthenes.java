@@ -5,6 +5,8 @@
  */
 package sieveoferatosthenes;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Shishir
@@ -17,6 +19,23 @@ public class SieveOfEratosthenes {
     public static void main(String[] args) {
         // TODO code application logic here
 
+        /*Take input from user*/
+       Scanner scanner = new Scanner(System.in);
+       System.out.println("Enter the number: ");
+       int n = scanner.nextInt();
+       System.out.println("Prime numbers from 0 to "+n);
+       new SieveOfEratosthenes().calculatePrimeNum(n);
+       
+    }
+    
+    /*
+      Method to displayFirst set of prime numbers
+    */
+    void calculatePrimeNum(int num){
+    
+        System.out.println(num);
+        
+    
     }
 
 }
