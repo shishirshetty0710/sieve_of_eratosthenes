@@ -25,7 +25,11 @@ public class SieveOfEratosthenes {
         System.out.println("Enter the number: ");
         int n = scanner.nextInt();
         System.out.println("Prime numbers from 0 to " + n);
+       
         new SieveOfEratosthenes().calculatePrimeNum(n);
+       
+        new SieveOfEratosthenes().process(n);
+       
 
     }
 
@@ -52,7 +56,7 @@ public class SieveOfEratosthenes {
                     SieveNum number = numbers.get(i);
 
                     if (number.getNum() != pos && number.getNum() % pos == 0) {
-                        
+
                         number.setFlag(true);
                     }
                 }
@@ -67,45 +71,46 @@ public class SieveOfEratosthenes {
                 System.out.println(numObj.getNum());
             }
         }
-      
 
     }
-    
-    /**
-     Translating pseudocode from Wiki
-     */
-     void process(int num) {
 
-        boolean primeNum[] = new boolean[num+1];
-        
-        for(int i =0 ; i< primeNum.length; i++){
-        
+    /**
+     * Translating pseudocode from Wiki
+     */
+    void process(int num) {
+
+        num += 1;
+        boolean primeNum[] = new boolean[num];
+
+        for (int i = 0; i < primeNum.length; i++) {
+
             primeNum[i] = true;
         }
-        
-        for(int i= 2 ; i < Math.sqrt(num); i++){
-        
-            if(primeNum[i]){
-            
-                for(int k = 0 ;k < num ; k++){
-                
-                    int j = i*i + k*i;
-                    
-                    if(j < num){
-                    
+
+        for (int i = 2; i < Math.ceil(Math.sqrt(num)); i++) {
+
+            if (primeNum[i]) {
+
+                for (int k = 0; k < num; k++) {
+
+                    int j = i * i + k * i;
+
+                    if (j < num) {
+
                         primeNum[j] = false;
                     }
                 }
-                
+
             }
         }
-        
-        for(int i =0; i< primeNum.length; i++){
-        
-            if(primeNum[i])
+
+        for (int i = 0; i < primeNum.length; i++) {
+
+            if (primeNum[i]) {
                 System.out.println(i);
+            }
         }
-        
+
     }
 
 }
