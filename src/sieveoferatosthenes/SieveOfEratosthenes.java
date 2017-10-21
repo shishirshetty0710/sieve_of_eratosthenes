@@ -70,6 +70,43 @@ public class SieveOfEratosthenes {
       
 
     }
+    
+    /**
+     Translating pseudocode from Wiki
+     */
+     void process(int num) {
+
+        boolean primeNum[] = new boolean[num+1];
+        
+        for(int i =0 ; i< primeNum.length; i++){
+        
+            primeNum[i] = true;
+        }
+        
+        for(int i= 2 ; i < Math.sqrt(num); i++){
+        
+            if(primeNum[i]){
+            
+                for(int k = 0 ;k < num ; k++){
+                
+                    int j = i*i + k*i;
+                    
+                    if(j < num){
+                    
+                        primeNum[j] = false;
+                    }
+                }
+                
+            }
+        }
+        
+        for(int i =0; i< primeNum.length; i++){
+        
+            if(primeNum[i])
+                System.out.println(i);
+        }
+        
+    }
 
 }
 
